@@ -27,7 +27,13 @@ THE SOFTWARE.
 #include <stdlib.h>
 #include <string.h>
 
+#ifdef _WIN32
+#define le32toh(x) x
+#define le16toh(x) x
+#define htole16(x) x
+#else
 #include <endian.h>
+#endif
 
 struct dos_header {
   uint16_t e_magic;
